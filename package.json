@@ -1,0 +1,29 @@
+{
+    "name": "minerva-web-development",
+    "version": "1.0.0",
+    "description": "MWD Theme",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "author": "Antonio Castiglione",
+    "license": "ISC",
+    "devDependencies": {
+        "sass": "^1.56.1",
+        "vite-plugin-sass-glob-import": "^5.0.0"
+    },
+    "dependencies": {
+        "@wordpress/eslint-plugin": "^13.6.0",
+        "autoprefixer": "^10.4.13",
+        "eslint": "^8.28.0",
+        "postcss": "^8.4.20",
+        "postcss-nested": "^6.0.0",
+        "prettier": "^2.8.0",
+        "tailwindcss": "^3.2.4",
+        "vite": "^6.3.5",
+        "vite-plugin-live-reload": "^3.0.3",
+        "wp-prettier": "^2.2.1-beta-1"
+    }
+}

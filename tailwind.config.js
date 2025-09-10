@@ -1,0 +1,77 @@
+module.exports = {
+    content: [
+        // https://tailwindcss.com/docs/content-configuration
+        "./*.php",
+        "./**/*.php",
+        "./inc/**/*.php",
+        "./templates/**/*.php",
+        "./safelist.txt",
+        "*.css",
+    ],
+    safelist: [
+        "text-center",
+        "flex",
+        "flex-row",
+        "flex-row-reverse",
+        "flex-col",
+        "items-center",
+        "justify-center",
+        "md:flex-row",
+        "md:flex-row-reverse",
+        "bg-white",
+        "bg-black",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "p",
+    ],
+    theme: {
+        extend: {
+            maxWidth: {
+                xs: "16rem",
+            },
+            colors: {
+                accent: "#FFC607",
+                yellow: "#FFC606",
+                gray: "#0000005F",
+                grayLight: "#00000029",
+                grayDark: "#585858",
+                purple: "#ED17FF",
+                orange: "#F77E0B",
+                red: "#C7211C",
+                white: "#FFFFFF",
+                black: "#000000",
+            },
+            fontFamily: {
+                sans: ["Staatliches, sans-serif"],
+                gothicRegular: ["headline-gothic-atf, sans-serif"],
+                gothicRough: ["headline-gothic-atf-rough-n1, sans-serif"],
+                gothicRough2: ["headline-gothic-atf-rough-n2, sans-serif"],
+                gothicRound: ["headline-gothic-atf-round, sans-serif"],
+            },
+            animation: {
+                "pulse-slow": "pulse-slow 4s ease-in-out infinite",
+                "rotate-slow": "rotate-slow 6s ease-in-out infinite",
+                "up-and-down": "up-and-down 3s ease-in-out infinite",
+            },
+            keyframes: {
+                "pulse-slow": {
+                    "0%, 100%": { transform: "scale(1)" },
+                    "50%": { transform: "scale(1.02)" },
+                },
+                "rotate-slow": {
+                    "0%": { transform: "rotate(-2deg)" },
+                    "50%": { transform: "rotate(2deg)" },
+                    "100%": { transform: "rotate(-2deg)" },
+                },
+                "up-and-down": {
+                    "0%, 100%": { transform: "translateY(0)" },
+                    "50%": { transform: "translateY(-10%)" },
+                },
+            },
+        },
+    },
+    plugins: [],
+};

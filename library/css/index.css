@@ -1,0 +1,135 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Font families */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap");
+
+* {
+    @apply font-sans font-light;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    overflow-x: hidden;
+}
+.container {
+    @apply max-w-screen-xl mx-auto px-4;
+}
+
+.btn,
+.wp-block-button > .wp-element-button {
+    @apply inline-block font-normal px-4 py-2 border-2 border-red rounded-full transition focus:outline-none cursor-pointer bg-red text-white;
+}
+.btn:hover,
+.wp-block-button > .wp-element-button:hover {
+    @apply bg-transparent text-red;
+}
+
+.btn-secondary,
+.wp-block-button.secondary-btn > .wp-element-button {
+    @apply inline-block font-normal px-4 py-2 border-2 border-white rounded-full transition focus:outline-none cursor-pointer bg-transparent text-white;
+}
+.btn-secondary:hover,
+.wp-block-button.secondary-btn > .wp-element-button:hover {
+    @apply bg-white text-black;
+}
+
+.btn-inline,
+.entry-content p a {
+    @apply text-yellow relative md:text-xl pr-5;
+}
+.btn-inline::after,
+.entry-content p a::after {
+    position: absolute;
+    right: 0;
+    font-family: "Font Awesome 7 Free";
+    content: "\f061";
+    font-weight: 900;
+    font-size: 0.875em;
+}
+
+h1,
+.h1 {
+    @apply text-5xl lg:text-6xl mb-4 text-yellow font-gothicRough tracking-[2.2px];
+}
+h2,
+.h2 {
+    @apply text-4xl lg:text-5xl mb-4 text-white font-gothicRough tracking-[1.5px];
+}
+h3,
+.h3 {
+    @apply text-3xl lg:text-4xl mb-4 lg:mb-8;
+}
+h4,
+.h4 {
+    @apply text-base uppercase text-accent;
+}
+
+img {
+    @apply max-w-full h-auto;
+}
+
+p {
+    @apply text-base md:text-xl mb-3 md:mb-4 tracking-[0.4px];
+}
+
+/* Content blocks */
+.content-media h1,
+.content-media h2 {
+    @apply lg:text-6xl font-extralight mb-4 lg:leading-[120%];
+}
+.content-media .title h4 {
+    @apply font-medium tracking-widest;
+}
+
+.content-block h2,
+.content-block h3 {
+    @apply text-4xl lg:text-6xl mb-4 lg:mb-8 font-extralight;
+}
+.content-block p {
+    @apply max-w-3xl m-auto;
+}
+
+/* sliders */
+[data-slider] .slick-slide {
+    @apply mx-6;
+}
+[data-slider] .slick-list {
+    @apply pt-8;
+}
+
+/* contact forms */
+.contact .gform_wrapper.gravity-theme .gfield_label,
+.contact .gform_wrapper.gravity-theme .gform-field-label {
+    @apply text-accent text-lg mb-2 font-extralight;
+}
+.contact .gform_wrapper.gravity-theme .ginput_container input,
+.contact .gform_wrapper.gravity-theme .ginput_container select,
+.contact .gform_wrapper.gravity-theme .ginput_container textarea {
+    @apply text-white py-3 px-4 placeholder:text-white placeholder:opacity-70;
+}
+.contact .gform_wrapper.gravity-theme .gform_footer input[type="submit"] {
+    @apply font-normal px-6 py-3 rounded focus:outline-none focus:ring-2 cursor-pointer;
+}
+
+/* Footer */
+.footer a {
+    @apply text-white hover:text-accent transition text-base mb-1 block text-wrap break-words;
+}
+.footer p {
+    @apply m-0;
+}
+
+/* Pagination */
+.page-numbers {
+    @apply flex items-center justify-center mt-8 mb-4 gap-1;
+}
+.page-numbers li a,
+.page-numbers li span {
+    @apply inline-block cursor-pointer m-0 px-3 py-2 text-white rounded focus:outline-none focus:ring-2 focus:ring-accent;
+}
+.page-numbers li .current {
+    @apply font-semibold cursor-default;
+}
