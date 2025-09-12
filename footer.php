@@ -29,7 +29,7 @@ $top_arrow    = get_stylesheet_directory_uri() . '/library/images/top-arrow.png'
 					<?php foreach ( $socials as $social ) : ?>
 						<li>
 							<a href="<?php echo esc_url( $social['link'] ); ?>" target="_blank" rel="noopener noreferrer">
-								<?php echo esc_html( $social['name'] ); ?>
+								<?php echo wp_kses_post( $social['name'] ); ?>
 							</a>
 						</li>
 					<?php endforeach; ?>
@@ -39,7 +39,9 @@ $top_arrow    = get_stylesheet_directory_uri() . '/library/images/top-arrow.png'
 		<div class="w-1/3 md:w-1/5">
 			<?php if ( $contact_info ) : ?>
 				<h4 class="text-xl mb-2 font-semibold">Get in touch</h4>
-				<div><?php echo wp_kses_post( $contact_info ); ?></div>
+				<div><?php echo wp_kses_post( $contact_info['hours'] ); ?></div>
+				<div><?php echo wp_kses_post( $contact_info['address'] ); ?></div>
+				<div><?php echo wp_kses_post( $contact_info['phone'] ); ?></div>
 			<?php endif; ?>
 		</div>
 	</div>

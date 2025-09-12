@@ -6,12 +6,6 @@
  */
 
 get_header();
-
-$home_id = get_option( 'page_on_front' );
-if ( $home_id ) {
-	$blocks = parse_blocks( get_post_field( 'post_content', $home_id ) );
-}
-
 global $wp_query;
 
 ?>
@@ -53,20 +47,6 @@ global $wp_query;
 			<div class="hidden lg:block top-0 -left-4 border-l-2 border-accent w-1 h-[70%] absolute"></div>
 			<div class="hidden lg:block top-[75%] -left-[4.5rem] absolute -rotate-90 font-semibold">Making IT Easy</div>
 		</div>
-		<?php
-		if ( ! empty( $blocks ) ) :
-			if ( $blocks ) {
-				foreach ( $blocks as $block ) {
-					if ( 'acf/testimonials' === $block['blockName'] ) {
-						echo render_block( $block ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					}
-					if ( 'acf/contact' === $block['blockName'] ) {
-						echo render_block( $block ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					}
-				}
-			}
-		endif;
-		?>
 
 	</main>
 

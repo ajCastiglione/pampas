@@ -11,6 +11,7 @@
     "author": "Antonio Castiglione",
     "license": "ISC",
     "devDependencies": {
+        "fast-glob": "^3.3.3",
         "sass": "^1.56.1",
         "vite-plugin-sass-glob-import": "^5.0.0"
     },

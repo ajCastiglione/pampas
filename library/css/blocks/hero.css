@@ -1,0 +1,11 @@
+.acf-hero iframe {
+    @apply w-full h-full;
+}
+
+.acf-hero h1 {
+    @apply md:text-[80px] lg:text-[120px] xl:text-[220px];
+}
+
+.acf-hero h2 {
+    @apply text-4xl lg:text-5xl;
+}

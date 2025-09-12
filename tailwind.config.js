@@ -7,6 +7,7 @@ module.exports = {
         "./templates/**/*.php",
         "./safelist.txt",
         "*.css",
+        "./library/css/**/*.css",
     ],
     safelist: [
         "text-center",

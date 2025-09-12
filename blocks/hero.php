@@ -17,47 +17,49 @@ if ( ! empty( $block['align'] ) ) {
 	$class_name .= ' align' . $block['align'];
 }
 
-$bg_color        = get_field( 'background_color' );
-$image           = get_field( 'image' );
-$img_underlay    = get_stylesheet_directory_uri() . '/library/images/blue-blob.png';
-$content         = get_field( 'content' );
-$hero_icons      = get_stylesheet_directory_uri() . '/library/images/NA-Icon-Line-BG.png';
-$dots            = get_stylesheet_directory_uri() . '/library/images/dots.png';
-$secondary_icons = get_stylesheet_directory_uri() . '/library/images/NA-Intro-Icon.png';
+$img_or_vid = get_field( 'image_or_video' );
+$image      = get_field( 'image' );
+$vid        = get_field( 'video_embed' );
+$content    = get_field( 'content' );
+$ctas       = get_field( 'ctas' );
+
+if ( mwd_is_mobile() ) {
+	$vid_id = trim( $vid['mobile_vid_id'] );
+	$aspect = 'aspect-[9/16]';
+} else {
+	$vid_id = trim( $vid['desktop_vid_id'] );
+	$aspect = 'aspect-video';
+}
 
 ?>
 
-<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?> bg-<?php echo esc_attr( $bg_color ); ?> text-white overflow-x-hidden">
-	<div class="hero-content relative container flex flex-col md:flex-row items-center gap-12 md:gap-6 py-10 lg:py-16">
-		<div class="hero-text md:w-2/5 w-full">
-			<?php echo wp_kses_post( $content ); ?>
-		</div>
-		<?php if ( $image ) : ?>
+<section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?> text-white overflow-x-hidden">
+	<div class="hero-content relative">
+		<?php if ( ! $img_or_vid ) : ?>
 			<div class="hero-image md:w-3/5 w-full relative pb-24 md:pb-28 lg:pb-40 z-[1]">
-				<!-- Underlay -->
-				<img
-					class="absolute top-0 right-0 max-h-full z-[1]"
-					src="<?php echo esc_url( $img_underlay ); ?>"
-					alt="Image underlay"
-					data-aos="fade-left"
-					data-aos-anchor="#hero"
-					data-aos-delay="520"
-					data-aos-duration="700"
-					data-aos-once="true">
+				<img class="absolute top-0 right-0 max-h-full z-[1]" src="<?php echo esc_url( $img_underlay ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
+			</div>
+		<?php else : ?>
+			<div class="hero-video w-full relative after:absolute after:inset-0 after:w-full after:h-full after:bg-black/60 after:z-[2] after:pointer-events-none <?php echo esc_attr( $aspect ); ?>">
+				<div class="absolute top-0 right-0 w-full h-full z-[1] pointer-events-none">
+					<iframe
+						src="https://www.youtube.com/embed/<?php echo esc_attr( $vid_id ); ?>?autoplay=1&mute=1&loop=1&playlist=<?php echo esc_attr( $vid_id ); ?>&controls=0&modestbranding=1&rel=0&showinfo=0"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin"
+						allowfullscreen></iframe>
+				</div>
+			</div>
+		<?php endif; ?>
 
-				<div
-					class="hero-pulse-wrap relative z-10 w-[90%] lg:w-full -right-10"
-					data-aos="fade-up"
-					data-aos-anchor="#hero"
-					data-aos-delay="500"
-					data-aos-duration="1000"
-					data-aos-easing="ease-out-cubic"
-					data-aos-once="true">
+		<div class="hero-text w-full absolute top-1/2 -translate-y-1/2 z-[2]">
+			<?php echo wp_kses_post( $content ); ?>
+			<?php if ( $ctas ) : ?>
+				<div class="hero-ctas flex flex-row gap-4 mt-6 justify-center">
+					<?php foreach ( $ctas as $cta ) : ?>
+						<a href="<?php echo esc_url( $cta['link'] ); ?>" class="<?php echo esc_attr( $cta['button_style'] ); ?>"><?php echo esc_html( $cta['text'] ); ?></a>
+					<?php endforeach; ?>
 				</div>
 			<?php endif; ?>
-
-			<div class="hidden lg:block top-0 -left-4 border-l-2 border-accent w-1 h-full absolute"></div>
-			</div>
-
-			<img class="absolute max-w-[50%] top-[40%] right-0 pointer-events-none opacity-30" src="<?php echo esc_url( $hero_icons ); ?>" alt="Hero Icons">
+		</div>
 </section>

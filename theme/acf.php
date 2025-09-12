@@ -76,6 +76,9 @@ function mwd_acf_option_init() {
 				'supports'        => array(
 					'multiple' => false,
 				),
+				'enqueue_assets'  => function() {
+					wp_enqueue_style( 'mwd-hero-block', get_dynamic_css_path() . '/blocks/hero.css', array(), '1.0.0', 'all' );
+				},
 			)
 		);
 		acf_register_block_type(
@@ -173,4 +176,4 @@ function populate_gravity_forms( $field ) {
 
 	return $field;
 }
-add_filter( 'acf/load_field/name=form', 'populate_gravity_forms' );
+add_filter( 'acf/load_field/name=form_id', 'populate_gravity_forms' );

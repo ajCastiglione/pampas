@@ -8,5 +8,6 @@
 register_nav_menus(
 	array(
 		'main-nav' => __( 'The Main Menu', 'mwd' ),
+		'side-nav' => __( 'The Side Menu', 'mwd' ),
 	)
 );

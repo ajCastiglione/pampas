@@ -19,17 +19,19 @@ body {
 }
 
 .btn,
-.wp-block-button > .wp-element-button {
-    @apply inline-block font-normal px-4 py-2 border-2 border-red rounded-full transition focus:outline-none cursor-pointer bg-red text-white;
+.wp-block-button > .wp-element-button,
+.side-nav a {
+    @apply inline-block font-normal px-4 py-2 border-2 border-red rounded-full transition focus:outline-none cursor-pointer bg-red text-white min-w-32 text-center;
 }
 .btn:hover,
-.wp-block-button > .wp-element-button:hover {
-    @apply bg-transparent text-red;
+.wp-block-button > .wp-element-button:hover,
+.side-nav a:hover {
+    @apply bg-red/75;
 }
 
 .btn-secondary,
 .wp-block-button.secondary-btn > .wp-element-button {
-    @apply inline-block font-normal px-4 py-2 border-2 border-white rounded-full transition focus:outline-none cursor-pointer bg-transparent text-white;
+    @apply inline-block font-normal px-4 py-2 border-2 border-white rounded-full transition focus:outline-none cursor-pointer bg-transparent text-white min-w-32 text-center;
 }
 .btn-secondary:hover,
 .wp-block-button.secondary-btn > .wp-element-button:hover {
@@ -58,6 +60,10 @@ h2,
 .h2 {
     @apply text-4xl lg:text-5xl mb-4 text-white font-gothicRough tracking-[1.5px];
 }
+h2 strong,
+.h2 strong {
+    @apply text-yellow;
+}
 h3,
 .h3 {
     @apply text-3xl lg:text-4xl mb-4 lg:mb-8;
@@ -73,6 +79,14 @@ img {
 
 p {
     @apply text-base md:text-xl mb-3 md:mb-4 tracking-[0.4px];
+}
+
+/* Navigation */
+.nav a {
+    @apply text-white hover:text-accent transition text-xl;
+}
+.side-nav a {
+    @apply text-xl leading-none;
 }
 
 /* Content blocks */

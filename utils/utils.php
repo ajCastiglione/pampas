@@ -21,6 +21,18 @@ function is_localhost() {
 }
 
 /**
+ * Dynamic file pathing based on local or production.
+ *
+ * @return string
+ */
+function get_dynamic_css_path() {
+	if ( is_localhost() ) {
+		return 'http://localhost:5173/library/css';
+	}
+	return get_stylesheet_directory_uri() . '/dist';
+}
+
+/**
  * Add type="module" to script tag
  * phpcs:disable WordPress.WP.EnqueuedResources.NonEnqueuedScript
  *
@@ -66,4 +78,37 @@ function mwd_pagination( $query ) {
 		'next_text' => __( 'Next &raquo;', 'textdomain' ),
 	);
 	echo wp_kses_post( paginate_links( $pagination_args ) );
+}
+
+/**
+ * Kses to allow iframe
+ *
+ * @return string
+ */
+function wp_kses_iframe() {
+	$iframe_args = array(
+		'iframe' => array(
+			'src'             => true,
+			'height'          => true,
+			'width'           => true,
+			'frameborder'     => true,
+			'allowfullscreen' => true,
+			'allow'           => true,
+			'title'           => true,
+			'referrerpolicy'  => true,
+		),
+	);
+	return $iframe_args;
+}
+
+/**
+ * Detect if Mobile device.
+ *
+ * @return bool
+ */
+function mwd_is_mobile() {
+	if ( wp_is_mobile() ) {
+		return true;
+	}
+	return false;
 }
