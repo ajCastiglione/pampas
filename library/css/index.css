@@ -106,14 +106,6 @@ p {
     @apply max-w-3xl m-auto;
 }
 
-/* sliders */
-[data-slider] .slick-slide {
-    @apply mx-6;
-}
-[data-slider] .slick-list {
-    @apply pt-8;
-}
-
 /* contact forms */
 .contact .gform_wrapper.gravity-theme .gfield_label,
 .contact .gform_wrapper.gravity-theme .gform-field-label {

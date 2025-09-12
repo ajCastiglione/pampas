@@ -85,20 +85,80 @@ function mwd_pagination( $query ) {
  *
  * @return string
  */
-function wp_kses_iframe() {
-	$iframe_args = array(
-		'iframe' => array(
-			'src'             => true,
-			'height'          => true,
-			'width'           => true,
-			'frameborder'     => true,
-			'allowfullscreen' => true,
-			'allow'           => true,
-			'title'           => true,
-			'referrerpolicy'  => true,
+function wp_kses_svg() {
+	$svg_args = array(
+		'svg'     => array(
+			'class'       => true,
+			'aria-hidden' => true,
+			'role'        => true,
+			'xmlns'       => true,
+			'width'       => true,
+			'height'      => true,
+			'style'       => true,
+			'fill'        => true,
+			'viewbox'     => true, // <= Must be lower case!
+		),
+		'mask'    => array(
+			'id'     => true,
+			'fill'   => true,
+			'width'  => true,
+			'height' => true,
+		),
+		'g'       => array(
+			'fill'      => true,
+			'transform' => true,
+		),
+		'title'   => array( 'title' => true ),
+		'path'    => array(
+			'd'               => true,
+			'transform'       => true,
+			'fill'            => true,
+			'fill-rule'       => true,
+			'clip-rule'       => true,
+			'mask'            => true,
+			'stroke'          => true,
+			'stroke-width'    => true,
+			'stroke-linejoin' => true,
+			'stroke-linecap'  => true,
+			'class'           => true,
+		),
+		'rect'    => array(
+			'x'            => true,
+			'y'            => true,
+			'rx'           => true,
+			'ry'           => true,
+			'width'        => true,
+			'height'       => true,
+			'stroke'       => true,
+			'stroke-width' => true,
+			'transform'    => true,
+			'fill'         => true,
+			'opacity'      => true,
+		),
+		'defs'    => array(),
+		'image'   => array(
+			'id'         => true,
+			'x'          => true,
+			'y'          => true,
+			'width'      => true,
+			'height'     => true,
+			'xlink'      => true,
+			'xlink:href' => true,
+		),
+		'pattern' => array(
+			'id'                  => true,
+			'width'               => true,
+			'height'              => true,
+			'pattern'             => true,
+			'patterncontentunits' => true,
+			'transform'           => true,
+		),
+		'use'     => array(
+			'xlink:href' => true,
+			'transform'  => true,
 		),
 	);
-	return $iframe_args;
+	return $svg_args;
 }
 
 /**
@@ -111,4 +171,18 @@ function mwd_is_mobile() {
 		return true;
 	}
 	return false;
+}
+
+/**
+ * Load SVG file contents.
+ *
+ * @param string $file Path to the SVG file.
+ * @return string SVG file contents or empty string if file not found.
+ */
+function mwd_load_svg( $file ) {
+	$file_path = get_stylesheet_directory() . $file;
+	if ( file_exists( $file_path ) ) {
+		return file_get_contents( $file_path ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+	}
+	return '';
 }
