@@ -17,7 +17,8 @@ $socials      = get_field( 'socials', 'option' );
 $top_arrow    = get_stylesheet_directory_uri() . '/library/images/top-arrow.png';
 
 ?>
-<footer class="footer py-12 relative">
+<footer class="footer relative">
+	<?php get_template_part( 'template-parts/footer/reviews' ); ?>
 	<div class="container flex flex-row flex-wrap md:flex-nowrap justify-between items-center gap-6 lg:gap-8">
 		<div class="w-full md:w-2/5 lg:w-3/5">
 			<img class="max-w-xs" src="<?php echo esc_url( $logo['url'] ); ?>" alt="<?php echo esc_attr( $logo['alt'] ); ?>">

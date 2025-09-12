@@ -36,7 +36,7 @@ module.exports = {
             colors: {
                 accent: "#FFC607",
                 yellow: "#FFC606",
-                gray: "#0000005F",
+                gray: "#151515",
                 grayLight: "#00000029",
                 grayDark: "#585858",
                 purple: "#ED17FF",
@@ -47,6 +47,7 @@ module.exports = {
             },
             fontFamily: {
                 sans: ["Staatliches, sans-serif"],
+                inter: ["Inter, sans-serif"],
                 gothicRegular: ["headline-gothic-atf, sans-serif"],
                 gothicRough: ["headline-gothic-atf-rough-n1, sans-serif"],
                 gothicRough2: ["headline-gothic-atf-rough-n2, sans-serif"],

@@ -78,7 +78,7 @@ img {
 }
 
 p {
-    @apply text-base md:text-xl mb-3 md:mb-4 tracking-[0.4px];
+    @apply text-base md:text-xl mb-3 md:mb-4 tracking-[0.4px] font-inter font-light;
 }
 
 /* Navigation */
@@ -136,14 +136,9 @@ p {
     @apply m-0;
 }
 
-/* Pagination */
-.page-numbers {
-    @apply flex items-center justify-center mt-8 mb-4 gap-1;
+.footer .reviews h2 {
+    @apply text-5xl md:text-6xl xl:text-[85px];
 }
-.page-numbers li a,
-.page-numbers li span {
-    @apply inline-block cursor-pointer m-0 px-3 py-2 text-white rounded focus:outline-none focus:ring-2 focus:ring-accent;
-}
-.page-numbers li .current {
-    @apply font-semibold cursor-default;
+.footer .reviews h2 strong {
+    @apply font-gothicRough block;
 }

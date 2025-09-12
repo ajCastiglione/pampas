@@ -25,7 +25,7 @@ function load_scripts() {
 	// Load Adobe Fonts.
 	wp_enqueue_style( 'adobe-fonts', 'https://use.typekit.net/sbi0nor.css', array(), '1.0.0', 'all' );
 	// Load Google Fonts.
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Staatliches&display=swap', array(), '1.0.0', 'all' );
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Staatliches&display=swap', array(), '1.0.0', 'all' );
 	// Load AOS libraries.
 	wp_enqueue_style( 'aos-css', 'https://unpkg.com/aos@2.3.1/dist/aos.css', array(), '2.3.1', 'all' );
 	wp_enqueue_script( 'aos-js', 'https://unpkg.com/aos@2.3.1/dist/aos.js', array( 'jquery' ), '2.3.1', true );
