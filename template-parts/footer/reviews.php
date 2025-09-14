@@ -5,12 +5,12 @@
  * @package Minerva Web Development
  */
 
-$opts            = get_field( 'footer', 'option' );
-$content         = $opts['reviews_content'] ?? '';
-$reviews_to_show = $opts['reviews_to_show'] ?? null;
-$gallery         = $opts['reviews_images'] ?? array();
+$opts              = get_field( 'footer', 'option' );
+$content           = $opts['reviews_content'] ?? '';
+$testimonial_posts = $opts['reviews_to_show'] ?? null;
+$gallery           = $opts['reviews_images'] ?? array();
 
-if ( is_null( $reviews_to_show ) || ! $reviews_to_show ) {
+if ( is_null( $testimonial_posts ) || ! $testimonial_posts ) {
 	$testimonials_args  = array(
 		'post_type'      => 'testimonial',
 		'posts_per_page' => 5,
@@ -34,14 +34,14 @@ wp_enqueue_script( 'slick-slider-js' );
 			<div class="w-full lg:w-1/2 text-white">
 				<div data-slider-container class="reviews-slider relative text-center bg-black px-8 py-11 rounded-tr-[50px] rounded-bl-[50px]">
 
-					<i data-slider-prev class="fa-solid fa-angle-left cursor-pointer absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+					<i data-slider-prev class="fa-solid fa-angle-left cursor-pointer absolute left-3 top-1/2 transform -translate-y-1/2 text-3xl"></i>
 					<div data-slider>
 						<?php
 						if ( $testimonial_posts ) :
 							foreach ( $testimonial_posts as $testimonial ) :
 								?>
 								<div class="px-8">
-									<div class="font-sans text-xl md:text-3xl mb-4"><?php echo wp_kses_post( get_the_title( $testimonial ) ); ?></div>
+									<div class="font-sans text-xl md:text-3xl mb-4"><?php echo wp_kses_post( get_the_title( $testimonial->ID ) ); ?></div>
 									<p class="text-base md:text-lg font-inter">"<?php echo wp_kses_post( get_field( 'review', $testimonial->ID ) ); ?>"</p>
 								</div>
 								<?php
@@ -56,7 +56,7 @@ wp_enqueue_script( 'slick-slider-js' );
 						<span class="font-inter font-light">Google Review</span>
 					</div>
 
-					<i data-slider-next class="fa-solid fa-angle-right cursor-pointer absolute right-3 top-1/2 transform -translate-y-1/2"></i>
+					<i data-slider-next class="fa-solid fa-angle-right cursor-pointer absolute right-3 top-1/2 transform -translate-y-1/2 text-3xl"></i>
 
 				</div>
 			</div>
