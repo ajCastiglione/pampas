@@ -1,6 +1,5 @@
 module.exports = {
     content: [
-        // https://tailwindcss.com/docs/content-configuration
         "./*.php",
         "./**/*.php",
         "./inc/**/*.php",

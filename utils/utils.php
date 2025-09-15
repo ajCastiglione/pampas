@@ -87,7 +87,7 @@ function mwd_pagination( $query ) {
  */
 function wp_kses_svg() {
 	$svg_args = array(
-		'svg'     => array(
+		'svg'      => array(
 			'class'       => true,
 			'aria-hidden' => true,
 			'role'        => true,
@@ -97,19 +97,24 @@ function wp_kses_svg() {
 			'style'       => true,
 			'fill'        => true,
 			'viewbox'     => true, // <= Must be lower case!
+			'xmlns:xlink' => true,
 		),
-		'mask'    => array(
+		'mask'     => array(
 			'id'     => true,
 			'fill'   => true,
 			'width'  => true,
 			'height' => true,
 		),
-		'g'       => array(
+		'g'        => array(
 			'fill'      => true,
 			'transform' => true,
+			'id'        => true,
+			'data-name' => true,
+			'clip-path' => true,
+			'data-name' => true,
 		),
-		'title'   => array( 'title' => true ),
-		'path'    => array(
+		'title'    => array( 'title' => true ),
+		'path'     => array(
 			'd'               => true,
 			'transform'       => true,
 			'fill'            => true,
@@ -121,8 +126,10 @@ function wp_kses_svg() {
 			'stroke-linejoin' => true,
 			'stroke-linecap'  => true,
 			'class'           => true,
+			'data-name'       => true,
+			'id'              => true,
 		),
-		'rect'    => array(
+		'rect'     => array(
 			'x'            => true,
 			'y'            => true,
 			'rx'           => true,
@@ -135,8 +142,8 @@ function wp_kses_svg() {
 			'fill'         => true,
 			'opacity'      => true,
 		),
-		'defs'    => array(),
-		'image'   => array(
+		'defs'     => array(),
+		'image'    => array(
 			'id'         => true,
 			'x'          => true,
 			'y'          => true,
@@ -145,7 +152,7 @@ function wp_kses_svg() {
 			'xlink'      => true,
 			'xlink:href' => true,
 		),
-		'pattern' => array(
+		'pattern'  => array(
 			'id'                  => true,
 			'width'               => true,
 			'height'              => true,
@@ -153,9 +160,12 @@ function wp_kses_svg() {
 			'patterncontentunits' => true,
 			'transform'           => true,
 		),
-		'use'     => array(
+		'use'      => array(
 			'xlink:href' => true,
 			'transform'  => true,
+		),
+		'clippath' => array(
+			'id' => true,
 		),
 	);
 	return $svg_args;

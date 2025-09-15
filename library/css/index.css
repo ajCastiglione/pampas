@@ -40,7 +40,7 @@ body {
 
 .btn-inline,
 .entry-content p a {
-    @apply text-yellow relative md:text-xl pr-5;
+    @apply text-yellow relative md:text-xl pr-6;
 }
 .btn-inline::after,
 .entry-content p a::after {
@@ -121,12 +121,7 @@ p {
 }
 
 /* Footer */
-.footer a {
-    @apply text-white hover:text-accent transition text-base mb-1 block text-wrap break-words;
-}
-.footer p {
-    @apply m-0;
-}
+
 
 .footer .reviews h2 {
     @apply text-5xl md:text-6xl xl:text-[85px];

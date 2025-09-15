@@ -497,6 +497,45 @@
                     "save_options": 0
                 }
             ]
+        },
+        {
+            "key": "field_68c85f37e5526",
+            "label": "Configs",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_68c85f43e5527",
+            "label": "Google maps API Key",
+            "name": "google_maps_api_key",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -517,5 +556,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1757605330
+    "modified": 1757962060
 }

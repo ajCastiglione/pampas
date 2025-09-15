@@ -59,3 +59,32 @@ function mwd_register_slick_slider() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'mwd_register_slick_slider' );
+
+/**
+ * Enqueue scripts and styles for ACF Map block.
+ */
+function mwd_register_acf_map_block() {
+	wp_register_script(
+		'google-maps-api',
+		'https://maps.googleapis.com/maps/api/js?key=' . esc_attr( get_field( 'google_maps_api_key', 'option' ) ) . '&callback=Function.prototype',
+		array( 'jquery' ),
+		'0.4.24',
+		true
+	);
+	wp_register_script(
+		'acf-map-block-js',
+		get_stylesheet_directory_uri() . '/library/js/maps/Map.js',
+		array( 'google-maps-api', 'jquery' ),
+		'0.4.24',
+		true
+	);
+
+	wp_localize_script(
+		'acf-map-block-js',
+		'map_vars',
+		array(
+			'styles' => file_get_contents( get_stylesheet_directory() . '/library/maps/pampas-map.json' ),
+		)
+	);
+}
+add_action( 'wp_enqueue_scripts', 'mwd_register_acf_map_block' );

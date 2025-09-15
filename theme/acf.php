@@ -177,3 +177,15 @@ function populate_gravity_forms( $field ) {
 	return $field;
 }
 add_filter( 'acf/load_field/name=form_id', 'populate_gravity_forms' );
+
+/**
+ * Add Google Maps API key to ACF Google Map field.
+ *
+ * @param array $api The API settings array.
+ * @return array The modified API settings array.
+ */
+function add_google_maps_api_key( $api ) {
+	$api['key'] = get_field( 'google_maps_api_key', 'option' );
+	return $api;
+}
+add_filter( 'acf/fields/google_map/api', 'add_google_maps_api_key' );
