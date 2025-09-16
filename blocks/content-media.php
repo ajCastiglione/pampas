@@ -17,19 +17,16 @@ if ( ! empty( $block['align'] ) ) {
 	$class_name .= ' align' . $block['align'];
 }
 
-$orientation     = 'left' === get_field( 'media_side' ) ? 'flex-row-reverse' : 'flex-row';
-$image           = get_field( 'media' );
-$img_underlay    = get_stylesheet_directory_uri() . '/library/images/NA-About-Color-BG.png';
-$content_title   = get_field( 'title' );
-$content         = get_field( 'content' );
-$dots            = get_stylesheet_directory_uri() . '/library/images/NA-About-Dots.png';
-$secondary_icons = get_stylesheet_directory_uri() . '/library/images/NA-About-Icon.png';
+$orientation   = 'left' === get_field( 'media_side' ) ? 'flex-row-reverse' : 'flex-row';
+$images        = get_field( 'media' );
+$content_title = get_field( 'title' );
+$content       = get_field( 'content' );
 
 ?>
 
 <section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?> text-white">
 	<div class="relative container py-16 lg:py-20">
-		<div class="title text-5xl mb-20 md:mb-18">
+		<div class="md:w-1/2 text-center title text-4xl md:text-5xl mb-8 md:mb-12">
 			<?php
 			if ( ! empty( $content_title ) ) :
 				echo wp_kses_post( $content_title );
@@ -37,82 +34,28 @@ $secondary_icons = get_stylesheet_directory_uri() . '/library/images/NA-About-Ic
 			?>
 		</div>
 
-		<div class="flex flex-col-reverse md:<?php echo esc_attr( $orientation ); ?> items-center gap-12 md:gap-16">
-			<div class="md:w-2/5 w-full"
-				data-aos="fade-up"
-				data-aos-delay="0"
-				data-aos-duration="700"
-				data-aos-easing="ease-out-cubic"
-				data-aos-once="true">
+		<div class="flex flex-col md:<?php echo esc_attr( $orientation ); ?> items-center gap-12 md:gap-16">
+			<div class="md:w-2/5 w-full">
 				<?php
 				if ( $content ) :
 					echo wp_kses_post( $content );
 				endif;
 				?>
 			</div>
-			<?php if ( $image ) : ?>
-				<div class="md:w-3/5 w-full relative z-[1]">
-					<!-- Underlay (subtle lead-in) -->
-					<img
-						class="absolute top-0 left-0 max-h-full z-[1]"
-						src="<?php echo esc_url( $img_underlay ); ?>"
-						alt="Image underlay"
-						data-aos="fade-right"
-						data-aos-anchor="#about"
-						data-aos-delay="240"
-						data-aos-duration="500"
-						data-aos-once="true"
-					>
-
-					<!-- Fade wrapper (AOS here) -->
-					<div
-						class="hero-pulse-wrap relative z-10 w-[80%] -right-16 md:-right-28"
-						data-aos="fade-up"
-						data-aos-anchor="#about"
-						data-aos-delay="500"
-						data-aos-duration="1000"
-						data-aos-easing="ease-out-cubic"
-						data-aos-once="true"
-					>
-						<!-- Main image (pulse lives here) -->
-						<img
-						class="hero-pulse animate-pulse-slow block w-full"
-						src="<?php echo esc_url( $image['url'] ); ?>"
-						alt="<?php echo esc_attr( $image['alt'] ); ?>"
-						decoding="async"
-						>
-					</div>
-
-					<!-- Dots (quick accent) -->
-					<img
-						class="absolute w-8 md:w-12 -top-8 md:-top-12 left-3 md:left-10 z-[2] pointer-events-none"
-						src="<?php echo esc_url( $dots ); ?>"
-						alt="Dots"
-						data-aos="fade-up"
-						data-aos-anchor="#about"
-						data-aos-delay="460"
-						data-aos-duration="450"
-						data-aos-once="true"
-					>
-
-					<!-- Secondary icon (finisher) -->
-					<img
-						class="absolute w-10 md:w-16 bottom-[15%] left-4 z-[2] pointer-events-none"
-						src="<?php echo esc_url( $secondary_icons ); ?>"
-						alt="Secondary Icons"
-						data-aos="fade-up"
-						data-aos-anchor="#about"
-						data-aos-delay="560"
-						data-aos-duration="450"
-						data-aos-once="true"
-					>
+			<?php if ( $images ) : ?>
+				<div class="md:w-3/5 w-full grid grid-cols-2 gap-4">
+					<?php
+					foreach ( $images as $index => $image_row ) :
+						$image       = $image_row['image'];
+						$padding_top = 1 === $index ? 'pt-6 md:pt-10' : '';
+						?>
+						<div class="<?php echo esc_attr( $padding_top ); ?>">
+							<img loading="lazy" class="" src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" decoding="async">
+						</div>
+					<?php endforeach; ?>
 				</div>
 			<?php endif; ?>
 		</div>
-
-		<div class="hidden lg:block top-0 -left-4 border-l-2 border-accent w-1 h-[70%] absolute"></div>
-		<div class="hidden lg:block top-[80%] -left-[4.5rem] absolute -rotate-90 font-semibold">Making IT Easy</div>
-
 
 	</div>
 </section>
