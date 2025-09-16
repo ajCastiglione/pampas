@@ -38,7 +38,7 @@ $socials      = get_field( 'socials', 'option' );
 					<ul class="flex space-x-4 mt-4">
 						<?php foreach ( $socials as $social ) : ?>
 							<li>
-								<a class="bg-white text-black rounded-full p-1 aspect-square inline-flex items-center justify-center" href="<?php echo esc_url( $social['link'] ); ?>" target="_blank" rel="noopener noreferrer">
+								<a class="bg-white text-black rounded-full p-1 aspect-square inline-flex items-center justify-center transition hover:bg-yellow" href="<?php echo esc_url( $social['link'] ); ?>" target="_blank" rel="noopener noreferrer">
 									<?php echo wp_kses_post( $social['name'] ); ?>
 								</a>
 							</li>

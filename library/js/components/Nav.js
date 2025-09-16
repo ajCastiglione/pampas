@@ -1,33 +1,24 @@
-export default function Nav() {
-    // Initial settings for the nav.
-    const settings = {
-        toggle: document.querySelector( "[data-js-nav-toggle]" ),
-        nav: document.querySelector( "[data-js-nav]" ),
-    };
-    // Set the open/close icons without making another dom query.
-    settings.openIcon = settings.toggle.getAttribute( "src" );
-    settings.closeIcon = settings.toggle.getAttribute( "data-close-icon-url" );
+export default function Nav( $ ) {
+    // Initial settings for the nav using jQuery.
+    let $toggle = $( "[data-js-nav-toggle]" );
+    let $nav = $( "[data-js-nav]" );
+    if ( !$toggle.length || !$nav.length ) return;
 
-    // If the nav doesn't exist, return.
-    if ( !settings.toggle || !settings.nav ) return;
-
-    // Add listener to toggle the nav's active state.
-    settings.toggle.addEventListener( "click", () => {
-        settings.nav.classList.toggle( "enabled" );
-
-        // If the nav is enabled, change to the close icon - else, change to the open icon.
-        if ( settings.nav.classList.contains( "enabled" ) ) {
-            settings.toggle.src = settings.closeIcon;
-        } else {
-            settings.toggle.src = settings.openIcon;
+    // Toggle nav active state
+    $toggle.on( "click", function ( e ) {
+        $nav.toggleClass( "active" );
+        $toggle.find( "i" ).removeClass( "fa-bars" ).addClass( "fa-xmark" );
+        if ( !$nav.hasClass( "active" ) ) {
+            $toggle.find( "i" ).removeClass( "fa-xmark" ).addClass( "fa-bars" );
         }
+        e.stopPropagation();
     } );
 
-    // Close the nav if the user clicks outside of it.
-    document.addEventListener( "click", ( e ) => {
-        if ( !settings.nav.contains( e.target ) && !settings.toggle.contains( e.target ) ) {
-            settings.nav.classList.remove( "enabled" );
-            settings.toggle.src = settings.openIcon;
+    // Close nav if clicking outside
+    $( document ).on( "click", function ( e ) {
+        if ( !$nav.is( e.target ) && $nav.has( e.target ).length === 0 && !$toggle.is( e.target ) ) {
+            $nav.removeClass( "active" );
+            // $toggle.attr( "src", openIcon );
         }
     } );
 }

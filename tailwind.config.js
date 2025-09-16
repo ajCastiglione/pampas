@@ -10,6 +10,7 @@ module.exports = {
     ],
     safelist: [
         "text-center",
+        "container",
         "flex",
         "flex-row",
         "flex-row-reverse",

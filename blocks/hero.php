@@ -61,5 +61,9 @@ if ( mwd_is_mobile() ) {
 					<?php endforeach; ?>
 				</div>
 			<?php endif; ?>
+
 		</div>
+
+		<div class="header-bottom-gradient absolute"></div>
+	</div>
 </section>

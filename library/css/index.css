@@ -13,6 +13,7 @@ html {
 }
 body {
     overflow-x: hidden;
+    background-color: #000;
 }
 .container {
     @apply max-w-screen-xl mx-auto px-4;
@@ -21,7 +22,7 @@ body {
 .btn,
 .wp-block-button > .wp-element-button,
 .side-nav a {
-    @apply inline-block font-normal px-4 py-2 border-2 border-red rounded-full transition focus:outline-none cursor-pointer bg-red text-white min-w-32 text-center;
+    @apply text-sm md:text-base lg:text-xl inline-block font-normal px-4 py-2 border-2 border-red rounded-full transition focus:outline-none cursor-pointer bg-red text-white min-w-32 text-center;
 }
 .btn:hover,
 .wp-block-button > .wp-element-button:hover,
@@ -31,7 +32,7 @@ body {
 
 .btn-secondary,
 .wp-block-button.secondary-btn > .wp-element-button {
-    @apply inline-block font-normal px-4 py-2 border-2 border-white rounded-full transition focus:outline-none cursor-pointer bg-transparent text-white min-w-32 text-center;
+    @apply text-sm md:text-base lg:text-xl inline-block font-normal px-4 py-2 border-2 border-white rounded-full transition focus:outline-none cursor-pointer bg-transparent text-white min-w-32 text-center;
 }
 .btn-secondary:hover,
 .wp-block-button.secondary-btn > .wp-element-button:hover {
@@ -82,11 +83,18 @@ p {
 }
 
 /* Navigation */
-.nav a {
-    @apply text-white hover:text-accent transition text-xl;
+.nav.active {
+    @apply opacity-100 pointer-events-auto;
 }
+.nav a {
+    @apply text-white hover:text-accent transition text-2xl md:text-base lg:text-xl;
+}
+.nav a:hover {
+    @apply text-yellow;
+}
+
 .side-nav a {
-    @apply text-xl leading-none;
+    @apply leading-none;
 }
 
 /* Content blocks */
@@ -174,6 +182,6 @@ p {
 }
 .footer .footer-nav a {
     color: #fff;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 20px;
 }
