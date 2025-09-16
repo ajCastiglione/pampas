@@ -26,13 +26,11 @@ if ( ! wp_style_is( 'slick-slider-css', 'enqueued' ) && ! wp_style_is( 'slick-sl
 	<div>
 		<div data-gallery-container>
 			<?php foreach ( $gallery as $image ) : ?>
-				<div>
-					<img
-						class="w-full h-auto"
-						src="<?php echo esc_url( $image['url'] ); ?>"
-						alt="<?php echo esc_attr( $image['alt'] ); ?>"
-					/>
-				</div>
+				<img
+					class="w-full h-full aspect-square object-cover"
+					src="<?php echo esc_url( $image['url'] ); ?>"
+					alt="<?php echo esc_attr( $image['alt'] ); ?>"
+				/>
 			<?php endforeach; ?>
 		</div>
 	</div>

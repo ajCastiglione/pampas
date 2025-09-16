@@ -107,25 +107,73 @@ p {
 }
 
 /* contact forms */
-.contact .gform_wrapper.gravity-theme .gfield_label,
-.contact .gform_wrapper.gravity-theme .gform-field-label {
+.form .gform_wrapper.gravity-theme .gfield_label,
+.form .gform_wrapper.gravity-theme .gform-field-label {
     @apply text-accent text-lg mb-2 font-extralight;
 }
-.contact .gform_wrapper.gravity-theme .ginput_container input,
-.contact .gform_wrapper.gravity-theme .ginput_container select,
-.contact .gform_wrapper.gravity-theme .ginput_container textarea {
-    @apply text-white py-3 px-4 placeholder:text-white placeholder:opacity-70;
+.form .gform_wrapper.gravity-theme .ginput_container input,
+.form .gform_wrapper.gravity-theme .ginput_container select,
+.form .gform_wrapper.gravity-theme .ginput_container textarea {
+    @apply text-white py-3 px-0 placeholder:text-white placeholder:opacity-70 bg-transparent border-b-2 border-b-grayDark font-inter;
 }
-.contact .gform_wrapper.gravity-theme .gform_footer input[type="submit"] {
+.form .gform_wrapper.gravity-theme .gform_footer input[type="submit"] {
     @apply font-normal px-6 py-3 rounded focus:outline-none focus:ring-2 cursor-pointer;
+}
+/* Newsletter specific styles */
+.form .gform_wrapper.newsletter_wrapper .gform_fields {
+    position: relative;
+    border-bottom: 2px solid #585858;
+}
+.form .gform_wrapper.newsletter_wrapper .gfield {
+    position: relative;
+}
+.form .gform_wrapper.newsletter_wrapper .gfield.gfield--type-email input {
+    border: none;
+}
+.form .gform_wrapper.newsletter_wrapper .gfield--type-submit {
+    position: absolute;
+    width: 30px;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9;
+}
+.form .gform_wrapper.newsletter_wrapper input[type="submit"] {
+    @apply font-normal p-0 rounded-full focus:outline-none focus:ring-2 cursor-pointer bg-yellow text-[0px] w-full h-full;
+}
+.form .gform_wrapper.newsletter_wrapper .gfield--type-submit::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Font Awesome 7 Free";
+    content: "\f061";
+    font-weight: 900;
+    font-size: 1rem;
+    color: #fff;
+    pointer-events: none;
+}
+.form .gform_wrapper.newsletter_wrapper .gform_footer {
+    display: none;
+}
+.form .gform_wrapper.newsletter_wrapper .gfield .validation_message {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform: translateY(4px);
 }
 
 /* Footer */
-
-
 .footer .reviews h2 {
     @apply text-5xl md:text-6xl xl:text-[85px];
 }
 .footer .reviews h2 strong {
     @apply font-gothicRough block;
+}
+.footer .footer-nav a {
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
 }
