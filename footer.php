@@ -27,7 +27,7 @@ $socials      = get_field( 'socials', 'option' );
 			<img class="max-w-xs" src="<?php echo esc_url( $logo['url'] ); ?>" alt="<?php echo esc_attr( $logo['alt'] ); ?>">
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-6 lg:gap-16 text-white mx-auto md:pl-12 lg:pl-14">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-x-6 lg:gap-16 text-white mx-auto md:pl-12 lg:pl-14">
 			<?php if ( $contact_info ) : ?>
 			<div>
 				<h4 class="text-2xl mb-4 font-semibold">GET IN TOUCH</h4>
@@ -47,50 +47,56 @@ $socials      = get_field( 'socials', 'option' );
 				<?php endif; ?>
 			</div>
 			<?php endif; ?>
-			<div>
-				<h4 class="text-2xl mb-4 font-semibold">DINING</h4>
-				<?php if ( has_nav_menu( 'dining-nav' ) ) : ?>
-					<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'dining-nav',
-							'menu_class'     => 'space-y-2 footer-nav',
-							'container'      => false,
-							'depth'          => 1,
-						)
-					);
-					?>
+			<div class="mt-8 md:mt-0">
+				<h4 data-js-footer-nav-toggle class="flex justify-between items-center text-2xl font-semibold border-t-2 border-gray py-2 md:border-none md:py-0">DINING <i class="fa-solid fa-angle-down md:hidden text-white"></i></h4>
+				<div class="hidden md:block pb-4">
+					<?php if ( has_nav_menu( 'dining-nav' ) ) : ?>
+						<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'dining-nav',
+								'menu_class'     => 'space-y-2 footer-nav',
+								'container'      => false,
+								'depth'          => 1,
+							)
+						);
+						?>
+				</div>
 				<?php endif; ?>
 			</div>
 			<div>
-				<h4 class="text-2xl mb-4 font-semibold">EVENTS & CATERING</h4>
-				<?php if ( has_nav_menu( 'events-nav' ) ) : ?>
-					<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'events-nav',
-							'menu_class'     => 'space-y-2 footer-nav',
-							'container'      => false,
-							'depth'          => 1,
-						)
-					);
-					?>
-				<?php endif; ?>
+				<h4 data-js-footer-nav-toggle class="flex justify-between items-center text-2xl font-semibold border-t-2 border-gray py-2 md:border-none md:py-">EVENTS & CATERING <i class="fa-solid fa-angle-down md:hidden text-white"></i></h4>
+				<div class="hidden md:block pb-4">
+					<?php if ( has_nav_menu( 'events-nav' ) ) : ?>
+						<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'events-nav',
+								'menu_class'     => 'space-y-2 footer-nav',
+								'container'      => false,
+								'depth'          => 1,
+							)
+						);
+						?>
+					<?php endif; ?>
+				</div>
 			</div>
 			<div>
-				<h4 class="text-2xl mb-4 font-semibold">ABOUT</h4>
-				<?php if ( has_nav_menu( 'about-nav' ) ) : ?>
-					<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'about-nav',
-							'menu_class'     => 'space-y-2 footer-nav',
-							'container'      => false,
-							'depth'          => 1,
-						)
-					);
-					?>
-				<?php endif; ?>
+				<h4 data-js-footer-nav-toggle class="flex justify-between items-center text-2xl font-semibold border-t-2 border-gray py-2 md:border-none md:py-">ABOUT <i class="fa-solid fa-angle-down md:hidden text-white"></i></h4>
+				<div class="hidden md:block pb-4">
+					<?php if ( has_nav_menu( 'about-nav' ) ) : ?>
+						<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'about-nav',
+								'menu_class'     => 'space-y-2 footer-nav',
+								'container'      => false,
+								'depth'          => 1,
+							)
+						);
+						?>
+					<?php endif; ?>
+				</div>
 			</div>
 		</div>
 

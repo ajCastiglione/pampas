@@ -26,7 +26,7 @@ $image   = get_field( 'image' );
 <section id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( $class_name ); ?> text-white bg-gray py-10 lg:py-16">
 	<div class="container">
 		<div class="flex flex-col-reverse lg:flex-row justify-center items-start gap-12 md:gap-16">
-			<div class="w-4/5 lg:w-2/5 video grid grid-cols-2 gap-4 lg:block">
+			<div class="w-full sm:w-4/5 lg:w-2/5 video grid grid-cols-2 gap-4 lg:block">
 				<?php if ( $video['video_placeholder_image'] ) : ?>
 					<div class="relative inline-block">
 						<?php if ( mwd_is_mobile() ) : ?>

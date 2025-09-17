@@ -63,7 +63,7 @@ wp_enqueue_script( 'slick-slider-js' );
 		</div>
 
 		<?php if ( $gallery ) : ?>
-		<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-12 lg:gap-40">
+		<div class="grid grid-cols-4 place-items-center gap-4 md:gap-12 lg:gap-40">
 			<?php foreach ( $gallery as $image ) : ?>
 				<div class="w-auto max-w-48">
 					<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
