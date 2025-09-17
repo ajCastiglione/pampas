@@ -1,0 +1,28 @@
+.content-video-block .content h2 {
+    font-size: 35px;
+}
+
+.content-video-block .video svg {
+    max-width: 60px;
+}
+
+@media (min-width: 768px) {
+    .content-video-block .content h2 {
+        font-size: 55px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .content-video-block .content h2 {
+        font-size: 70px;
+    }
+    .content-video-block .video svg {
+        max-width: 130px;
+    }
+}
+
+@media(min-width: 1280px) {
+	.content-video-block .content h2 {
+		font-size: 85px;
+	}
+}

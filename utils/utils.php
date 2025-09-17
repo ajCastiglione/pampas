@@ -33,6 +33,18 @@ function get_dynamic_css_path() {
 }
 
 /**
+ * Dynamic file pathing based on local or production.
+ *
+ * @return string
+ */
+function get_dynamic_js_path() {
+	if ( is_localhost() ) {
+		return 'http://localhost:5173/library/js';
+	}
+	return get_stylesheet_directory_uri() . '/dist';
+}
+
+/**
  * Add type="module" to script tag
  * phpcs:disable WordPress.WP.EnqueuedResources.NonEnqueuedScript
  *
@@ -87,7 +99,7 @@ function mwd_pagination( $query ) {
  */
 function wp_kses_svg() {
 	$svg_args = array(
-		'svg'      => array(
+		'svg'            => array(
 			'class'       => true,
 			'aria-hidden' => true,
 			'role'        => true,
@@ -99,13 +111,46 @@ function wp_kses_svg() {
 			'viewbox'     => true, // <= Must be lower case!
 			'xmlns:xlink' => true,
 		),
-		'mask'     => array(
+		'mask'           => array(
 			'id'     => true,
 			'fill'   => true,
 			'width'  => true,
 			'height' => true,
 		),
-		'g'        => array(
+		'filter'         => array(
+			'id'          => true,
+			'x'           => true,
+			'y'           => true,
+			'width'       => true,
+			'height'      => true,
+			'filterunits' => true,
+		),
+		'feoffset'       => array(
+			'result' => true,
+			'in'     => true,
+			'dx'     => true,
+			'dy'     => true,
+			'input'  => true,
+		),
+		'fegaussianblur' => array(
+			'in'           => true,
+			'stddeviation' => true,
+			'result'       => true,
+		),
+		'feflood'        => array(
+			'flood-color'   => true,
+			'flood-opacity' => true,
+			'relative'      => true,
+			'in'            => true,
+			'result'        => true,
+		),
+		'fecomposite'    => array(
+			'in'       => true,
+			'in2'      => true,
+			'operator' => true,
+			'result'   => true,
+		),
+		'g'              => array(
 			'fill'      => true,
 			'transform' => true,
 			'id'        => true,
@@ -113,8 +158,8 @@ function wp_kses_svg() {
 			'clip-path' => true,
 			'data-name' => true,
 		),
-		'title'    => array( 'title' => true ),
-		'path'     => array(
+		'title'          => array( 'title' => true ),
+		'path'           => array(
 			'd'               => true,
 			'transform'       => true,
 			'fill'            => true,
@@ -129,7 +174,7 @@ function wp_kses_svg() {
 			'data-name'       => true,
 			'id'              => true,
 		),
-		'rect'     => array(
+		'rect'           => array(
 			'x'            => true,
 			'y'            => true,
 			'rx'           => true,
@@ -142,8 +187,20 @@ function wp_kses_svg() {
 			'fill'         => true,
 			'opacity'      => true,
 		),
-		'defs'     => array(),
-		'image'    => array(
+		'circle'         => array(
+			'cx'           => true,
+			'cy'           => true,
+			'r'            => true,
+			'stroke'       => true,
+			'stroke-width' => true,
+			'transform'    => true,
+			'fill'         => true,
+			'opacity'      => true,
+			'data-name'    => true,
+			'id'           => true,
+		),
+		'defs'           => array(),
+		'image'          => array(
 			'id'         => true,
 			'x'          => true,
 			'y'          => true,
@@ -152,7 +209,7 @@ function wp_kses_svg() {
 			'xlink'      => true,
 			'xlink:href' => true,
 		),
-		'pattern'  => array(
+		'pattern'        => array(
 			'id'                  => true,
 			'width'               => true,
 			'height'              => true,
@@ -160,11 +217,11 @@ function wp_kses_svg() {
 			'patterncontentunits' => true,
 			'transform'           => true,
 		),
-		'use'      => array(
+		'use'            => array(
 			'xlink:href' => true,
 			'transform'  => true,
 		),
-		'clippath' => array(
+		'clippath'       => array(
 			'id' => true,
 		),
 	);

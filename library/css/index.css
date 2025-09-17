@@ -16,7 +16,7 @@ body {
     background-color: #000;
 }
 .container {
-    @apply max-w-screen-xl mx-auto px-4;
+    @apply max-w-screen-xl mx-auto px-8 lg:px-4;
 }
 
 .btn,

@@ -85,13 +85,30 @@ function mwd_acf_option_init() {
 			array(
 				'name'            => 'content-media',
 				'title'           => __( 'Content & Media' ),
-				'description'     => __( 'Displays a title, media, and content section with a choice of background color' ),
+				'description'     => __( 'Displays a title, media, and content section' ),
 				'render_callback' => 'render_callback',
 				'category'        => 'layout',
 				'icon'            => 'media-document',
 				'align'           => 'wide',
 				'keywords'        => array( 'content', 'media' ),
 				'mode'            => 'edit',
+			)
+		);
+		acf_register_block_type(
+			array(
+				'name'            => 'content-video',
+				'title'           => __( 'Content & Video' ),
+				'description'     => __( 'Displays an image, video, and content section' ),
+				'render_callback' => 'render_callback',
+				'category'        => 'layout',
+				'icon'            => 'format-video',
+				'align'           => 'wide',
+				'keywords'        => array( 'content', 'video' ),
+				'mode'            => 'edit',
+				'enqueue_assets'  => function() {
+					wp_enqueue_style( 'mwd-content-video-block', get_dynamic_css_path() . '/blocks/content-video.css', array(), '1.0.0', 'all' );
+					wp_enqueue_script( 'mwd-content-video-block', get_dynamic_js_path() . '/blocks/content-video.js', array( 'jquery' ), '1.0.0', true );
+				},
 			)
 		);
 		acf_register_block_type(
